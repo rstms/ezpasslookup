@@ -5,10 +5,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
-import json
-
 import time
 import sys
+import json
+import subprocess
 
 URL = 'https://www.e-zpassny.com'
 
@@ -23,6 +23,8 @@ KEYS = ['Violation No.', 'License Plate', 'Date & Time', 'Facility', 'Status', '
 
 def handler(event, context):
 
+    subprocess.Popen('cd headless-chrome;./run', shell=True)
+
     url = event.get('url') or URL
     violation_number = event.get('violation_number')
     license_plate = event.get('license_plate')
@@ -30,9 +32,8 @@ def handler(event, context):
     chrome_options = Options()
     chrome_options.add_argument('--headless')
 
-        #executable_path='/usr/lib/chromium-browser/chromedriver',
     driver = webdriver.Chrome(
-        executable_path='./headless-chrome/headless_shell',
+        executable_path='/usr/lib/chromium-browser/chromedriver',
         chrome_options = chrome_options
     )
 
