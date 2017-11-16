@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -20,17 +21,18 @@ ERROR_KEY = 'No violations match the information you entered.'
 
 KEYS = ['Violation No.', 'License Plate', 'Date & Time', 'Facility', 'Status', 'Toll', 'Fee', 'Amt Due']
 
-def lambda_handler(event, context):
+def handler(event, context):
 
-    url = event['url']
-    violation_number = event['violation_number']
-    license_plate = event['license_plate']
+    url = event.get('url') or URL
+    violation_number = event.get('violation_number')
+    license_plate = event.get('license_plate')
 
     chrome_options = Options()
     chrome_options.add_argument('--headless')
 
+        #executable_path='/usr/lib/chromium-browser/chromedriver',
     driver = webdriver.Chrome(
-        executable_path='/usr/lib/chromium-browser/chromedriver',
+        executable_path='./headless-chrome/headless_shell',
         chrome_options = chrome_options
     )
 
@@ -121,5 +123,5 @@ if __name__ == '__main__':
     event['violation_number'] = sys.argv[1]
     event['license_plate'] = sys.argv[2]
     event['url'] = URL
-    ret = lambda_handler(event, None)
+    ret = handler(event, None)
     print('%s' % ret)

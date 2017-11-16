@@ -4,12 +4,23 @@ PROJECT := ezpaylookup
 
 AWS_REGION := us-east-1
 
+default: build
 
-$(PROJECT).zip:	$(PROJECT).py
-	zip $@ $<
+GITURL := https://github.com/adieuadieu/serverless-chrome/raw/master/chrome
+TARBALL := chrome-headless-lambda-linux-x64.tar.gz
+
+headless-chrome:
+	wget $(GITURL)/$(TARBALL) && \
+	tar zxfv $(TARBALL) && \
+	rm $(TARBALL)
+	cp run headless-chrome
 
 clean:
-	rm *.zip
+	rm -f *.zip
+	rm -f *.pyc
+	rm -rf headless-chrome 
+	rm -rf dist
+	rm -f 
 
 test:	test0 test1 test2 test3
 
@@ -25,5 +36,8 @@ test2:
 test3:
 	python3 ezpaylookup.py T021784575788 T720852C | jq .
 
-install:
-	aws lambda delete-function --region=$(AWS_REGION) --function-name=$(PROJECT)
+build: headless-chrome
+	lambda build
+
+deploy: build
+	lambda deploy_s3
