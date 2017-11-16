@@ -1,0 +1,11 @@
+#!/bin/sh
+pgrep >/dev/null headless_shell \
+&& echo headless_shell already running \
+|| ( mkdir -p /tmp/data-path && mkdir -p /tmp/cache-dir && exec ./headless_shell \
+  --disable-gpu \
+  --no-sandbox \
+  --homedir=/tmp \
+  --single-process \
+  --data-path=/tmp/data-path \
+  --disk-cache-dir=/tmp/cache-dir \
+  --remote-debugging-port=9222 )
