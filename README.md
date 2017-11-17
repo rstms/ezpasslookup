@@ -25,13 +25,15 @@ OUTPUT:
 
 
 Error Handling:
---------------- If the function encounters an error, it should return ERROR No Violations Match or ERROR Unknown
+--------------- 
+If the function encounters an error, it should return ERROR No Violations Match or ERROR Unknown
 
 
 Installation
 ------------
-The project has a Makefile which may be used to build and deploy the function to AWS Lambda.  Due to the size of the binaries,
-it requires an S3 bucket with a folder.
+Clone this repository to a local or AWS EC2 Linux development environment.  The project contains a Makefile which
+is used to build and deploy the function to AWS Lambda.  Due to the size of the binaries, Lambda deployment
+requires an S3 bucket.
 
 
 AWS Authentication
