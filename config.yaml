@@ -1,15 +1,15 @@
 region: us-east-1
 
-function_name: ezpaylookup
-handler: ezpaylookup.handler
-description: lookup violation data from e-zpayny
+function_name: ezpasslookup
+handler: ezpasslookup.handler
+description: lookup violation data from e-zpassny.com
 runtime: python3.6
 role: lambda_execute_role
 
 # S3 upload requires appropriate role with s3:PutObject permission
 # (ex. basic_s3_upload), a destination bucket, and the key prefix
 bucket_name: 'rstms-lambda-test'
-s3_key_prefix: 'ezpaylookup/'
+s3_key_prefix: 'ezpasslookup/'
 
 # if access key and secret are left blank, boto will use the credentials
 # defined in the [default] section of ~/.aws/credentials.
@@ -17,14 +17,14 @@ aws_access_key_id:
 aws_secret_access_key:
 
 # dist_directory: dist
-# timeout: 15
+timeout: 60 
 # memory_size: 512
 #
 
 # Experimental Environment variables
-environment_variables:
-    env_1: foo
-    env_2: baz
+#environment_variables:
+#    env_1: foo
+#    env_2: baz
 
 # Build options
 build:
