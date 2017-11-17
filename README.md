@@ -38,7 +38,9 @@ requires an S3 bucket.
 
 AWS Authentication
 ------------------
-The system's ~/.aws/config and ~/.aws/credentials will be used for AWS authentication
+The system's `~/.aws/config` and `~/.aws/credentials` may be used for AWS authentication, or these data may be
+specified in `config.yaml` as detailed below.
+
 The IAM user specified must be authorized to write to the S3 bucket and create the Lambda function
 
 
@@ -47,21 +49,21 @@ Virtualenv
 [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/#) is highly recommended for the build and deploy environment.  
 
 
-Configure
----------
-Edit the folowing items in config.yaml
+Configuration
+-------------
+Edit (at least) the folowing items in config.yaml
 
  - region: ex: `us-east-1`
  - role: ex: `lambda_execute_role`
  - bucket_name: ex: `ezpasslookup-lambda`
  - s3_key_prefix: ex: `ezpasslookup/`
- - aws_access_key_id: YOUR_AWS_ACCESS_KEY_ID
+ - aws_access_key_id: YOUR_AWS_ACCESS_KEY_ID 
  - aws_secret_access_key: YOUR_AWS_SECRET_ACCESS_KEY
 
 
 Build and Deploy
 ----------------
-This command will download the dependencies, build, and deploy the lambda function:
+This command will download dependencies, build, and deploy the lambda function:
 ```
 make deploy
 ```
