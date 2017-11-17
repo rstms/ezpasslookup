@@ -41,7 +41,7 @@ test2:
 test3:
 	python3 ezpasslookup.py T021784575788 T720852C | jq .
 
-build: headless-chrome
+build: depends headless-chrome
 	lambda build
 
 deploy: build 

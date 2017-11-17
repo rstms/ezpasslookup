@@ -32,6 +32,8 @@ Clone this repository to a local or AWS EC2 Linux development environment.  The 
 is used to build and deploy the function to AWS Lambda.  Due to the size of the binaries, Lambda deployment
 requires an S3 bucket.
 
+The project has been developed and tested with Python 3
+
 
 AWS Authentication
 ------------------
