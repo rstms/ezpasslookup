@@ -1,0 +1,2 @@
+#!/bin/bash
+lambda build --use-requirements && lambda deploy_s3 --use-requirements

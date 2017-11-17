@@ -12,8 +12,8 @@ import json
 
 URL = 'https://www.e-zpassny.com'
 
-ERROR_UNKNOWN = '"ERROR-Unknown"'
-ERROR_NODATA = '"ERROR-No Violations Match"'
+ERROR_UNKNOWN = 'ERROR-Unknown'
+ERROR_NODATA = 'ERROR-No Violations Match'
 
 TOTAL_KEY = 'Total No of Violations:'
 INFO_KEY = 'Violation Information'
@@ -129,7 +129,6 @@ def handler(event, context):
             driver.find_element_by_xpath("//a[@title='Goto next page']").click()
         else:    
             ret = items
-            #json.dumps(items, sort_keys=True)
             break
 
     driver.close()
@@ -141,4 +140,4 @@ if __name__ == '__main__':
     event['license_plate'] = sys.argv[2]
     event['url'] = URL
     ret = handler(event, None)
-    print('%s' % ret)
+    print('%s' % json.dumps(ret, sort_keys=True))

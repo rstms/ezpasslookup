@@ -28,11 +28,11 @@ If the function encounters an error, it should return ERROR No Violations Match 
 
 Installation
 ------------
-Clone this repository to a local or AWS EC2 Linux development environment.  The project contains a Makefile which
-is used to build and deploy the function to AWS Lambda.  Due to the size of the binaries, Lambda deployment
-requires an S3 bucket.
+The project is designed to be cloned from github into a local or EC2 dev environment, then built and
+deployed to AWS Lambda.  The project contains a Makefile which is used to build and deploy the function 
+to AWS Lambda.  Due to the size of the binaries, Lambda deployment requires an S3 bucket.
 
-The project has been developed and tested with Python 3
+This project has been developed and tested with Python 3
 
 
 AWS Authentication
@@ -62,9 +62,11 @@ Edit (at least) the folowing items in config.yaml
 
 Build and Deploy
 ----------------
-This command will download dependencies, build, and deploy the lambda function:
+These commands will download dependencies, build, and deploy the lambda function:
 ```
-make deploy
+make
+lambda build
+lambda deploy_s3
 ```
 
 Author Contact

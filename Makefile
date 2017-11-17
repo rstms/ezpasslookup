@@ -4,21 +4,21 @@ PROJECT := ezpasslookup
 
 AWS_REGION := us-east-1
 
-DEPENDENCIES := https://github.com/rstms/python-lambda/archive/master.zip chromedriver selenium
+DEPENDENCIES := https://github.com/rstms/python-lambda/archive/v2.2.0-fixed.zip chromedriver selenium
 
 GITURL := https://github.com/adieuadieu/serverless-chrome/raw/master/chrome
 TARBALL := chrome-headless-lambda-linux-x64.tar.gz
 
-default: deploy 
+default: depends headless-chrome
+
+depends:
+	pip install $(DEPENDENCIES)
 
 headless-chrome:
 	wget $(GITURL)/$(TARBALL) && \
 	tar zxfv $(TARBALL) && \
 	rm $(TARBALL)
 	cp templates/* headless-chrome
-
-depends:
-	pip install $(PIP_DEPENDENCIES)
 
 clean:
 	rm -f *.zip
@@ -40,9 +40,3 @@ test2:
 
 test3:
 	python3 ezpasslookup.py T021784575788 T720852C | jq .
-
-build: depends headless-chrome
-	lambda build
-
-deploy: build 
-	lambda deploy_s3
