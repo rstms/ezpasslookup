@@ -1,5 +1,7 @@
-# ezpaylookup
-EZ-Pay Violation Lookup Lambda Function
+# ezpasslookup
+
+
+EZ-Pass Violation Lookup Lambda Function
 
 Project Specifications
 
@@ -61,3 +63,9 @@ This command will download the dependencies, build, and deploy the lambda functi
 ```
 make deploy
 ```
+
+Author Contact
+--------------
+Matt Krueger (mkrueger@rstms.net) 
+Reliance Systems, Inc.  
+www.rstms.net
