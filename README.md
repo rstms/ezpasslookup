@@ -1,7 +1,4 @@
-# ezpasslookup
-
-
-EZ-Pass Violation Lookup Lambda Function
+# EZ-Pass Violation Lookup Lambda Function
 
 Project Specifications
 
