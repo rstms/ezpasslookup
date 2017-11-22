@@ -101,12 +101,16 @@ def handler(event, context):
 
         cnums = rows[0].split()
 
-        if cnums[2] == '1' and cnums[3] == 'item':
+        #print('rows[0]: %s' % rows[0])
+        #print('cnums: %s' % repr(cnums))
+
+        if cnums[3]=='item' or cnums[3]=='items':
             snum = 1
-            enum = 1
-            if total != 1:
+            enum = int(cnums[2])
+            if total != enum:
                 ret = ERROR_UNKNOWN
                 break
+
         else:
             snum = int(cnums[2])
             enum = int(cnums[4])
